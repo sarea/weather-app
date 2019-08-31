@@ -1,0 +1,13 @@
+<ng-container>
+  <div *ngIf="citiesCurrentWeather$ | async as citiesCurrentWeather">
+    <div *ngFor="let cityWeather of citiesCurrentWeather">
+      <owm-city-item
+        role="button"
+        *ngIf="cityWeather" 
+        [cityWeather]="cityWeather"
+        (click)="navigateToCityDetails(cityWeather.name)"
+      >
+    </owm-city-item>
+    </div>
+  </div>
+</ng-container>

@@ -1,0 +1,12 @@
+:host {
+    margin: 10px 220px;
+    @media screen and (max-width: 1090px) {
+        margin: 10px 100px;
+    }
+    @media screen and (max-width: 768px) {
+        margin: 10px 30px;
+    }
+    @media screen and (max-width: 375px) {
+        margin: 10px 10px;
+    }
+}

@@ -1,0 +1,21 @@
+.logo-container {
+    margin: 15px 100px;
+    display: flex;
+
+    @media screen and (max-width: 768px) {
+        margin: 10px 20px;
+    }
+
+    .logo {
+        cursor: pointer;
+        display: flex;
+        img {
+            height: 80px;
+        }
+        h1 {
+            font-family: 'Oleo Script', cursive;;
+            position: absolute;
+            margin-left: 45px;
+        }
+    }
+}

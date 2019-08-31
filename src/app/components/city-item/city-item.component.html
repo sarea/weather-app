@@ -1,0 +1,16 @@
+<div class="item-container">
+  <div class="city-name">
+    <h3>{{cityWeather.name}}</h3>
+  </div>
+  <div class="current-temp">
+    <img [src]="owmApiService.getWeatherUrl(cityWeather.weather[0].icon)" />
+    <div>{{utilService.getRoundedNumber(cityWeather.main.temp)}} &#8451;</div>
+  </div>
+  <div class="avg-temp">
+    <div>{{utilService.getRoundedNumber(cityWeather.main.temp_min)}}/{{utilService.getRoundedNumber(cityWeather.main.temp_max)}} &#8451;</div>
+  </div>
+  <div class="wind-speed">
+    <img [src]="utilService.getIconUrl('wind')" />
+    <div>{{utilService.mileToKilometer(cityWeather.wind.speed)}} km/h</div>
+  </div>
+</div>

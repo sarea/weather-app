@@ -12,13 +12,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "app",
+      "owm",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "app",
+      "owm",
       "kebab-case"
     ],
     "import-blacklist": [
@@ -72,7 +72,6 @@
       true,
       "single"
     ],
-    "trailing-comma": false,
     "no-conflicting-lifecycle": true,
     "no-host-metadata-property": true,
     "no-input-rename": true,
@@ -81,8 +80,10 @@
     "no-output-on-prefix": true,
     "no-output-rename": true,
     "no-outputs-metadata-property": true,
+    "space-before-function-paren": false,
     "template-banana-in-box": true,
     "template-no-negated-async": true,
+    "trailing-comma": false,
     "use-lifecycle-interface": true,
     "use-pipe-transform-interface": true
   },

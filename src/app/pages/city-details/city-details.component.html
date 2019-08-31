@@ -1,0 +1,72 @@
+<div class="city-details-container">
+  <div *ngIf="hourlyResponse$ | async as hourlyResponse">
+    <!-- Current weather details -->
+    <div class="details-now">
+      <div class="left-side">
+        <div class="city-details">
+          <div class="city-name">{{hourlyResponse.city.name}}</div>
+          <div class="description">{{hourlyResponse.list[0].weather[0].description}}</div>
+        </div>
+        <div class="sun-details">
+          <div class="sunrise">
+            <img [src]="utilsService.getIconUrl('sunrise')" />
+            <div>{{utilsService.secondsToTime(hourlyResponse.city.sunrise)}}</div>
+          </div>
+          <div class="sunset">
+            <img [src]="utilsService.getIconUrl('sunset')" />
+            <div>{{utilsService.secondsToTime(hourlyResponse.city.sunset)}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="right-side">
+        <div class="other-details">
+          <div class="humidity">
+            <img [src]="utilsService.getIconUrl('humidity')" />
+            <div>{{hourlyResponse.list[0].main.humidity}}%</div>
+          </div>
+          <div class="wind">
+            <img [src]="utilsService.getIconUrl('wind')" />
+            <div>{{utilsService.mileToKilometer(hourlyResponse.list[0].wind.speed)}} km/h</div>
+          </div>
+        </div>
+        <div class="temp-details">
+          <div class="icon">
+            <img [src]="owmApiService.getWeatherUrl(hourlyResponse.list[0].weather[0].icon)" />
+          </div>
+          <div class="temp">{{utilsService.getRoundedNumber(hourlyResponse.list[0].main.temp)}} &#8451;</div>
+        </div>
+      </div>
+    </div>
+    <!-- List of next hours weather -->
+    <div class="hourly-list">
+      <div class="hourly-item" *ngFor="let hourlyWeather of hourlyResponse.list;let i = index">
+        <!-- only for the first index (tody) -->
+        <div class="date" *ngIf="i === 0 && utilsService.getHours(hourlyWeather.dt) > 3">
+          Today
+        </div>
+        <!-- every new day -->
+        <div class="date" *ngIf="i !== 0 && utilsService.getHours(hourlyWeather.dt) < 3">
+          {{utilsService.getDateTime(hourlyWeather.dt)}}
+        </div>
+        <div class="hourly-details">
+          <div class=description-time>
+            <div class="time">{{utilsService.secondsToTime(hourlyWeather.dt)}}</div>
+            <div class="description">{{hourlyWeather.weather[0].description}}</div>
+          </div>
+          <div class="temp-details">
+            <div class="icon">
+              <img [src]="owmApiService.getWeatherUrl(hourlyWeather.weather[0].icon)" />
+            </div>
+            <div class="temp">{{utilsService.getRoundedNumber(hourlyWeather.main.temp)}} &#8451;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="hourlyResponseError" class="error-response">
+    <h2>Error!</h2>
+    <h3>{{hourlyResponseError}}</h3>
+  </div>
+
+</div>
