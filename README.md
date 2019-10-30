@@ -1,4 +1,4 @@
-# BackBaseTest
+# Weather App
 
 Weather app made using [OpenWeatherMap API](https://openweathermap.org)
 
